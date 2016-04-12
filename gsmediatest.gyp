@@ -45,6 +45,7 @@
               'gsmedia.h', 
               'stream.cc',
               'stream.h',
+              #'gsmediatest-jni.cc',
             ],
 
         },      
