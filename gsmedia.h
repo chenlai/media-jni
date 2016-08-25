@@ -1,6 +1,14 @@
 #ifndef GS_MEDIA_H__
 #define GS_MEDIA_H__
 
+
+
+typedef struct 
+{
+	bool loop;
+}aud_cfg_t;
+
+
 class GSMedia 
 {
 
@@ -12,7 +20,7 @@ public:
         
     }
 
-    virtual int Init() = 0;
+    virtual int start(aud_cfg_t *aud) = 0;
 
     virtual void stop() = 0;
 

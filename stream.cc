@@ -11,10 +11,30 @@ GSMedia *stream;
 #define EXPORT  __attribute__((visibility("default"))) 
 
 
+static aud_cfg_t conf{
+	.loop = false,
+
+};
+
+
 void EXPORT voice_start(){
 	stream = GSMedia::create();
-	stream->Init();
+	stream->start(&conf);
+
 }
+
+void EXPORT setLoop(bool loop){
+
+	conf.loop = loop;
+
+}
+
+
+// void EXPORT setLoop(){
+
+
+
+// }
 
 
 void EXPORT voice_stop(){

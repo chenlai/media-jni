@@ -4,7 +4,7 @@
 
 #include "webrtc/voice_engine/include/voe_base.h"
 #include "webrtc/voice_engine/include/voe_codec.h"
-#include "webrtc/voice_engine/include/voe_dtmf.h"
+//#include "webrtc/voice_engine/include/voe_dtmf.h"
 #include "webrtc/voice_engine/include/voe_neteq_stats.h"
 #include "webrtc/voice_engine/include/voe_network.h"
 #include "webrtc/voice_engine/include/voe_rtp_rtcp.h"
@@ -15,9 +15,11 @@
 
 #include "webrtc/voice_engine/include/voe_file.h"
 
-#include "webrtc/modules/audio_coding/main/interface/audio_coding_module.h"
+#include "webrtc/modules/audio_coding/include/audio_coding_module.h"
+#include "webrtc/test/channel_transport/channel_transport.h"
 
 using namespace webrtc;
+using namespace test;
 
 
 
@@ -34,7 +36,7 @@ public:
  *audio stream
  */
 
-    int Init() override;
+    int start(aud_cfg_t *aud) override;
 
     void stop() override;
     
@@ -52,7 +54,10 @@ private:
     VoEBase* voe_base;
     VoENetwork* voe_netw;
 
+    VoiceChannelTransport *channel_transport; 
+
     int32_t channel_id;
+    bool loop;
 
 };
 
