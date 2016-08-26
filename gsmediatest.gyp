@@ -20,6 +20,7 @@
                 '<(webrtc_root)/modules/modules.gyp:webrtc_utility',
                 '<(webrtc_root)/system_wrappers/system_wrappers.gyp:*',
                 '<(webrtc_root)/voice_engine/voice_engine.gyp:voice_engine',
+                '<(webrtc_root)/test/test.gyp:channel_transport',
             ],
 
             'libraries': [

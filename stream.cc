@@ -13,6 +13,7 @@ GSMedia *stream;
 
 static aud_cfg_t conf{
 	.loop = false,
+	.ip_address = {0},
 
 };
 
@@ -23,9 +24,17 @@ void EXPORT voice_start(){
 
 }
 
-void EXPORT setLoop(bool loop){
+void EXPORT setLoop(int loop){
 
 	conf.loop = loop;
+
+}
+
+void EXPORT setIP(char *ipaddr){
+
+	if (ipaddr != NULL){
+		strcpy(conf.ip_address, ipaddr);
+	}
 
 }
 

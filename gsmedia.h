@@ -6,6 +6,7 @@
 typedef struct 
 {
 	bool loop;
+	char ip_address[20];
 }aud_cfg_t;
 
 

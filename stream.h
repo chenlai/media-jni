@@ -11,7 +11,8 @@ void gs_set_jvm(JavaVM *vm);
 void gs_set_android_objects(jobject connext);
 void voice_start();
 void voice_stop();
-void setLoop(bool loop);
+void setLoop(int loop);
+void setIP(char *addrip);
 
 
 

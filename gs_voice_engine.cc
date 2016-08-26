@@ -37,6 +37,11 @@ int GSVoiceEngine::start(aud_cfg_t *aud){
 
     ALOGW("GSVoice start ..................................................");
 
+
+
+    int err = 0;
+
+
     voe_base->Init();
     channel_id = voe_base->CreateChannel();
     voe_base->StartSend(channel_id);
@@ -46,9 +51,17 @@ int GSVoiceEngine::start(aud_cfg_t *aud){
 
     if (aud->loop){
         voe_netw->RegisterExternalTransport(channel_id, *this);
-        loop = aud->loop;
+        loop = true;
     } else {
-       // channel_transport = new VoiceChannelTransport(); 
+        ALOGW(" IP address : %s...................................................", aud->ip_address);
+        channel_transport = new VoiceChannelTransport(voe_netw, channel_id); 
+        err = channel_transport->SetSendDestination("127.0.0.1" , 5004);
+        if (err < 0){
+            voe_netw->RegisterExternalTransport(channel_id, *this);
+            loop = true;           
+            ALOGW("Set ip address fail. ......");
+        }
+        channel_transport->SetLocalReceiver(5004);
     }
 
 
